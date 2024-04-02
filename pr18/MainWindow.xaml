@@ -1,0 +1,132 @@
+﻿<Window x:Class="pr18.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:pr18"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="13*"/>
+            <RowDefinition Height="7*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!--Меню-->
+        
+        <Menu Grid.ColumnSpan="2" VerticalAlignment="Top">
+
+            <MenuItem Header="Файл">
+                
+                <MenuItem Header="Выполнить программу с консоли" 
+                          Click="btnLog_Click"/>
+
+                <Separator/>
+
+                <MenuItem Header="Выйти" 
+                          Click="btnExit_Click"/>
+                
+            </MenuItem>
+
+            <MenuItem Header="База данных">
+                
+                <MenuItem Header="Добавить"
+                          Click="btnAdd_Click"/>
+                
+                <MenuItem Header="Изменить"
+                          Click="btnChange_Click"/>
+                
+                <MenuItem Header="Просмотр"
+                          Click="btnView_Click"/>
+                
+                <MenuItem Header="Удалить"
+                          Click="btnDelete_Click"/>
+            </MenuItem>
+            
+        </Menu>
+
+        <!--Управление БД-->
+        
+        <Grid Grid.Column="1"
+              Grid.RowSpan="2"
+              Grid.Row="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Button Content="Добавить"
+                    Height="60"
+                    Width="200"
+                    Click="btnAdd_Click"
+                    FontSize="20"/>
+
+            <Button Content="Изменить"
+                    Height="60"
+                    Width="200"
+                    Click="btnChange_Click"
+                    Grid.Row="1"
+                    FontSize="20"/>
+            
+            <Button Content="Просмотр"
+                    Height="60"
+                    Width="200"
+                    Click="btnView_Click"
+                    Grid.Row="2"
+                    FontSize="20"/>
+
+            <Button Content="Удалить"
+                    Height="60"
+                    Width="200"
+                    Click="btnDelete_Click"
+                    Grid.Row="3"
+                    FontSize="20"/>
+
+            <Button Content="Выход"
+                    Height="60"
+                    Width="200"
+                    Click="btnExit_Click"
+                    Grid.Row="4"
+                    FontSize="20"/>
+        </Grid>
+
+        <!--Датагрид-->
+        
+        <DataGrid Grid.Row="1"
+                  x:Name="MainDataGrid"
+                  IsReadOnly="True"></DataGrid>
+
+        <!--Консоль-->
+        
+        <Grid Grid.Row="2">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Height="120"
+                     Width="400"
+                     x:Name="tbLog"
+                     KeyUp="tbLogKeyUp"/>
+
+            <Button Grid.Column="1"
+                    Height="120"
+                    Content="Go"
+                    FontSize="20"
+                    Click="btnLog_Click"/>
+
+        </Grid>
+
+    </Grid>
+</Window>

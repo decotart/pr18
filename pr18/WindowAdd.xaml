@@ -1,0 +1,133 @@
+﻿<Window x:Class="pr18.WindowAdd"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:pr18"
+        mc:Ignorable="d"
+        Title="WindowAdd" Height="450" Width="300" Loaded="WindowAdd_Loaded">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Заполните форму"
+               Grid.ColumnSpan="2"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"
+               FontSize="20"/>
+
+        <Label Grid.Row="1"
+               Content="Название лекарства"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"/>
+
+        <TextBox Grid.Row="1"
+                 Grid.Column="1"
+                 Width="100"
+                 Height="45"
+                 x:Name="tbName"/>
+
+        <Label Grid.Row="2"
+               Content="Цена одной единицы"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"/>
+
+        <TextBox Grid.Row="2"
+                 Grid.Column="1"
+                 Width="100"
+                 Height="45"
+                 x:Name="tbPrice"
+                 />
+
+        <Label Grid.Row="3"
+               Content="Количество единиц"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"/>
+
+        <TextBox Grid.Row="3"
+                 Grid.Column="1"
+                 Width="100"
+                 Height="45"
+                 x:Name="tbCount"
+                 />
+
+        <Label Grid.Row="4"
+               Content="Дата изготовления"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"/>
+
+        <DatePicker Grid.Row="4"
+                    Grid.Column="1"
+                    x:Name="dpProd"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+
+        <Label Grid.Row="5"
+               Content="Годен до"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"/>
+
+        <DatePicker Grid.Row="5"
+                    Grid.Column="1"
+                    x:Name="dpEx"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+
+        <Label Grid.Row="6"
+               Content="Наименование производителя"
+               VerticalAlignment="Center"
+               FontSize="9"
+               HorizontalAlignment="Center"/>
+
+        <TextBox Grid.Row="7"
+                 Grid.Column="1"
+                 Width="100"
+                 Height="45"
+                 x:Name="tbNamOfCorp"
+                 />
+
+        <Label Grid.Row="7"
+               Content="Адрес производителя"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"/>
+
+        <TextBox Grid.Row="6"
+                 Grid.Column="1"
+                 Width="100"
+                 Height="45"
+                 x:Name="tbAdresOfCorp"
+         />
+
+        <Button Grid.Row="8"
+                Content="Добавить"
+                Width="100"
+                Height="45"
+                Background="White"
+                Click="btnAdd_Click"
+                x:Name="btn"/>
+
+        <Button Grid.Row="8"
+                Grid.Column="1"
+                Content="Отмена"
+                Width="100"
+                Height="45"
+                Background="White"
+                Click="btnCancel_Click"/>
+
+    </Grid>
+</Window>
