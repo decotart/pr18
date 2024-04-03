@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -34,8 +35,9 @@ namespace pr18
 
                 LoadDbInDataGrid();
             }
-            catch
+            catch (Exception ex)
             {
+                tbLog.Text = ex.Message;
                 MessageBox.Show("Что-то пошло не так");
             }
         }
@@ -55,9 +57,10 @@ namespace pr18
                     LoadDbInDataGrid();
                 }
             }
-            catch
+            catch (Exception ex)
             {
                 MessageBox.Show("Что-то пошло не так");
+                tbLog.Text = ex.Message;
             }
         }
 
@@ -81,15 +84,16 @@ namespace pr18
                     {
                         using (Db18Context db = new())
                         {
-                            db.Tbls.Remove(row);
-                            db.SaveChanges();
+                            int count = db.Database.ExecuteSql($"delete from tbl where id = {row.Id}");
                         }
                         LoadDbInDataGrid();
                     }
                 }
-                catch
+                catch(Exception ex)
                 {
                     MessageBox.Show("Что-то пошло не так");
+                    tbLog.Text = ex.Message;
+
                 }
             }
             else MainDataGrid.Focus();
@@ -102,13 +106,41 @@ namespace pr18
 
         private void btnLog_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                FormattableString selection = FormattableStringFactory.Create(tbLog.Text);
 
+                using (Db18Context _db = new())
+                {
+                    if (tbLog.Text.ToUpper().StartsWith("SELECT"))
+                    {
+                        var gen = _db.Tbls.FromSql(selection);
+                        MainDataGrid.ItemsSource = gen.ToList();
+                    }
+                    else if (tbLog.Text == "/getback")
+                    {
+                        LoadDbInDataGrid();
+                    }
+                    else
+                    {
+                        int count = _db.Database.ExecuteSql(selection);
+                        LoadDbInDataGrid();
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Что-то пошло не так");
+                tbLog.Text = ex.Message;
+            }
         }
 
         private void tbLogKeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
+                btnLog_Click(sender, e);
             }
         }
 

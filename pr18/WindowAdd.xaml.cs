@@ -43,10 +43,16 @@ namespace pr18
                     int id = Data.tbl.Id;
 
                     int count = _db.Database.ExecuteSql($"UPDATE tbl SET NameOfL = {tbName.Text}, SumOfL = {Convert.ToInt32(tbPrice.Text)}, DateOfProd = {dateProd}, ExpDate = {dateEx}, NameOfFabric = {tbNamOfCorp.Text}, AdresOfFabric = {tbAdresOfCorp.Text} WHERE Id = {id}");
+
+                    MessageBox.Show("Запись успешно изменена!");
+                    Close();
                 }
                 else
                 {
                     int count = _db.Database.ExecuteSql($"INSERT INTO tbl (NameOfL, SumOfL, CountOfL, DateOfProd, ExpDate, NameOfFabric, AdresOfFabric) VALUES({tbName.Text}, {tbPrice.Text}, {tbCount.Text}, {dateProd}, {dateEx}, {tbNamOfCorp.Text}, {tbAdresOfCorp.Text})");
+
+                    MessageBox.Show("Запись успешно изменена!");
+                    Close();
                 }
             }
         }
